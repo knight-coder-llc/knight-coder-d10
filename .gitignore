@@ -1,0 +1,4 @@
+vendor
+composer.lock
+web/modules/contrib
+web/vendor
