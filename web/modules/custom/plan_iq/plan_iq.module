@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Module to integrate ChatGPT with Drupal.
+ */
+
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\node\NodeForm;
+ 
+ /**
+  * Implements hook_help() for module help info.
+  */
+ function plan_iq_help($route_name, RouteMatchInterface $route_match) {
+   switch ($route_name) {
+     case 'help.page.plan_iq':
+       $output = '';
+       $output .= '<h3>' . t('About') . '</h3>';
+       $output .= '<p>' . t('This module will integrate OpenAI with our Drupal system. [some description].');
+    //    $output .= ' ' . t('For more information, see the <a href=":drupal-org-help">online documentation for the ChatGPT Content Generator module</a>.', [':drupal-org-help' => 'https://www.drupal.org/project/chatgpt_plugin']);
+       $output .= '</p>';
+       return $output;
+   }
+ 
+ }

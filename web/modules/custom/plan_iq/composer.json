@@ -1,0 +1,19 @@
+{
+    "name": "drupal/PlanIQ",
+    "type": "drupal-module",
+    "description": "PlanIQ is a Drupal 10 module that leverages chatGPT and optimization to create and manage plans via the google calendar.",
+    "keywords": ["Drupal", "PlanIQ", "chatGPT", "google calendar"],
+    "homepage": "",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "PlanIQ",
+            "email": "knight-coder@hotmail.com",
+            "homepage": "https://knight-coder.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "drupal/core": ">=10"
+    }
+}

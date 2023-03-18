@@ -19,7 +19,7 @@ hr { margin-left: 0;margin-right: auto; }
   blockquote, .blockquote p { font-size:  18px; } 
 } 
 
-.page-title-full-width-container .breadcrumb { right: 60px; left: auto; } 
+.page-title-full-width-container .breadcrumb { right: 140px; left: auto; } 
 
 #page-title { text-align:  center } 
 
@@ -44,26 +44,26 @@ hr { margin-left: 0;margin-right: auto; }
 .dxpr-theme-boxed-container .tabs-right .nav-tabs .active>a { border-left-color: #ffffff; }
 
 .container {
-  max-width: 850px;
-  padding-left: 60px;
-  padding-right: 60px;
+  max-width: 1280px;
+  padding-left: 140px;
+  padding-right: 140px;
 }
 .navbar-container.dxpr-theme-fluid,
 .page-title-container.dxpr-theme-fluid,
 .container-fluid {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 .dxpr-theme-boxed-container {
   max-width: 1580px;
 }
 .row {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -50px;
+  margin-right: -50px;
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-bottom: 30px;
 }
 .region-sidebar-first .block,
@@ -101,7 +101,7 @@ body { background-attachment: fixed; }
   #dxpr-theme-main-menu,
   #dxpr-theme-main-menu .menu__breadcrumbs,
   #dxpr-theme-main-menu .menu__level {
-    text-align: left;
+    text-align: center;
   }
 .dxpr-theme-header--side .dxpr-theme-main-menu {
   width: 300px;
@@ -123,11 +123,11 @@ body { background-attachment: fixed; }
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top .nav > li > span,
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top .wrap-branding,
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top .block-dxpr-theme-helper {
-  height: 110px;
-  line-height: 110px;
+  height: 100px;
+  line-height: 100px;
 }
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top .dxpr-theme-main-menu {
-  height: 110px;
+  height: 100px;
 }
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top.affix .nav > li > a,
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top .nav > li > span,
@@ -140,36 +140,36 @@ body { background-attachment: fixed; }
   height: 50px;
 }
 .body--dxpr-theme-nav-desktop .nav-child-fixed-width {
-  top: 110px;
+  top: 100px;
 }
 .body--dxpr-theme-nav-desktop .dxpr-theme-header--top.affix .nav-child-fixed-width {
   top: 50;
 }
-.body--dxpr-theme-nav-desktop.body--dxpr-theme-header-fixed.body--dxpr-theme-header-not-overlay { padding-top: 110px !important }
+.body--dxpr-theme-nav-desktop.body--dxpr-theme-header-fixed.body--dxpr-theme-header-not-overlay { padding-top: 100px !important }
 
-  html.js .body--dxpr-theme-nav-desktop.toolbar-fixed.toolbar-horizontal.body--dxpr-theme-header-fixed.body--dxpr-theme-header-not-overlay { padding-top: 149px !important }
+  html.js .body--dxpr-theme-nav-desktop.toolbar-fixed.toolbar-horizontal.body--dxpr-theme-header-fixed.body--dxpr-theme-header-not-overlay { padding-top: 139px !important }
 
-  html.js .body--dxpr-theme-nav-desktop.toolbar-fixed.toolbar-horizontal.toolbar-tray-open.toolbar-horizontal.body--dxpr-theme-header-fixed.body--dxpr-theme-header-not-overlay { padding-top: 190px !important }
+  html.js .body--dxpr-theme-nav-desktop.toolbar-fixed.toolbar-horizontal.toolbar-tray-open.toolbar-horizontal.body--dxpr-theme-header-fixed.body--dxpr-theme-header-not-overlay { padding-top: 180px !important }
 
 .body--dxpr-theme-nav-mobile .dxpr-theme-header .navbar-header .wrap-branding,
 .body--dxpr-theme-nav-mobile .dxpr-theme-header .navbar-toggle {
-  height: 60px;
+  height: 70px;
 }
 .body--dxpr-theme-nav-mobile .dxpr-theme-header .block-dxpr-theme-helper {
-  height: 60px;
-  line-height: 60px;
+  height: 70px;
+  line-height: 70px;
 }
 .html--dxpr-theme-sticky-footer .body--dxpr-theme-nav-desktop .dxpr-theme-header--top {
-  min-height: 110px;
+  min-height: 100px;
 }
 .html--dxpr-theme-sticky-footer .body--dxpr-theme-nav-desktop .dxpr-theme-header--top.affix {
   min-height: 50px;
 }
 .html--dxpr-theme-sticky-footer .body--dxpr-theme-nav-mobile .dxpr-theme-header {
-  min-height: 60px;
+  min-height: 70px;
 }
 .html--dxpr-theme-sticky-footer .body--dxpr-theme-nav-mobile .dxpr-theme-header.affix {
-  min-height: 60px;
+  min-height: 70px;
 }
 .dropdown-menu, .dropdown-menu li {
   min-width: 160px;
@@ -212,22 +212,29 @@ blockquote, blockquote p {
   font-style: normal;
 }
 
-#logo {border-radius: 4%;min-width:75px;max-height:75px!important;}.region-sidebar-first .block, .region-sidebar-second .block, .region-content-top .block, .region-content-bottom .block, .blocks-preview .block {
+#logo {border-radius: 4%;min-width:75px;max-height:75px!important;}
+.path-frontpage img.image-style-large {width:375px!important;height:375px;}
+.path-frontpage article.is-promoted.teaser h2 {text-align: center;}
+img {margin: auto;}
+.region-content-top .block, .region-content-bottom .block, .region-content .block, .blocks-preview .block {
   border-width: 0px;
   border-style: none;
   border-radius: 0px;
+  padding:  10px; 
 } 
 
-.region-sidebar-first .block-title, .region-sidebar-second .block-title, .region-content-top .block-title, .region-content-bottom .block-title, .blocks-preview .block-title {
-  font-size: 38px;
+.region-content-top .block-title, .region-content-bottom .block-title, .region-content .block-title, .blocks-preview .block-title {
+  font-size: 21px;
   text-align: center;
   border-width: 0px;
   border-style: none;
-  border-radius: 0px;
+  border-radius: 100px;
   display: block;
+  padding:  10px; 
+  background-color:  #555555; 
 } 
 
 @media screen and (max-width: 768px) { 
-  .region-sidebar-first .block-title, .region-sidebar-second .block-title, .region-content-top .block-title, .region-content-bottom .block-title, .blocks-preview .block-title { font-size: 38px; } 
+  .region-content-top .block-title, .region-content-bottom .block-title, .region-content .block-title, .blocks-preview .block-title { font-size: 24px; } 
 } 
 

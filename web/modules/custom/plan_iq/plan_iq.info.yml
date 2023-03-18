@@ -1,0 +1,5 @@
+name: PlanIQ
+description: AI powered task manager and schedule optimizer.
+type: module
+package: AI
+core_version_requirement: =>10

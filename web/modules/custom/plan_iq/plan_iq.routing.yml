@@ -1,0 +1,7 @@
+plan_iq.admin_settings:
+  path: '/admin/config/plan-iq'
+  defaults:
+    _form: '\Drupal\plan_iq\Form\PlanIQConfigForm'
+    _title: 'PlanIQ Settings'
+  requirements:
+    _permission: 'Administer site configuration'
