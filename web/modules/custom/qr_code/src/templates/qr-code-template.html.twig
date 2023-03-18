@@ -1,0 +1,14 @@
+{% extends 'core/page.html.twig' %}
+
+{% block content %}
+  <div class="qr-code-wrapper">
+    <h1>QR Code</h1>
+    <div class="qr-code">
+        <img src="data:image/png;base64,{{ image_data }}" alt="QR Code" />
+         <br />
+        <a href="{{ path('qr_code.qr_code_download') }}">Download QR Code</a>
+    </div>
+  </div>
+{% endblock %}
+
+{# <img src="data:image/png;base64,{{ base64_encode(#qr_code_image_data) }}" alt="QR Code"> #}

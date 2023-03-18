@@ -1,0 +1,5 @@
+name: 'QR Code Generator'
+type: module
+description: 'Feature to generate QR codes'
+package: Knight Coder
+core_version_requirement: ^9 || ^10

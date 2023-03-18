@@ -1,0 +1,14 @@
+qr_code.generate:
+  path: '/qr-code/generate'
+  defaults:
+    _controller: '\Drupal\qr_code\Controller\QRCodeController::generate'
+    _title: 'Generate QR Code'
+  requirements:
+    _permission: 'access content'
+qr_code.qr_code_download:
+  path: '/qr-code/download'
+  defaults:
+    _controller: '\Drupal\qr_code\Controller\QRCodeController::downloadQRCodeImage'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
