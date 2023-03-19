@@ -1,7 +1,8 @@
 <?php
 
-namespace Drupal\your_module\Form;
+namespace Drupal\qr_code\Form;
 
+use Drupal\Core\Url;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use BaconQrCode\Encoder\QrCode;
@@ -78,9 +79,6 @@ class QrCodeForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Get the QR code data from the form submission.
-    $qrCodeData = $form_state->getValue('qr_code_data');
-
     // Get the QR code logo from the form submission.
     $qrCodeLogo = $form_state->getValue('qr_code_logo');
     
@@ -95,8 +93,7 @@ class QrCodeForm extends FormBase {
     }
 
     // Get the QR text from the form submission.
-    $qrText = $form_state->getValue('qr_code_data');
-
+    $qrText = urlencode($form_state->getValue('qr_code_data'));
     // Send the values to the QR code generator controller.
     $form_state->setRedirect('qr_code.generate', [
       'text' => $qrText,

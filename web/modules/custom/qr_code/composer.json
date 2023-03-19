@@ -1,7 +1,0 @@
-{
-    "name": "drupal/qr_code",
-    "type": "drupal-module",
-    "require": {
-      "bacon/bacon-qr-code": "^3.0"
-    }
-  }

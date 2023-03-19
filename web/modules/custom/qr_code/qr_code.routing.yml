@@ -1,14 +1,23 @@
 qr_code.generate:
-  path: '/qr-code/generate'
+  path: '/qr-code/generate/{text}/{size}/{ecc_level}/{logo_path?}'
   defaults:
     _controller: '\Drupal\qr_code\Controller\QRCodeController::generate'
     _title: 'Generate QR Code'
   requirements:
     _permission: 'access content'
+    logo_path: '.*\.(png|jpg|jpeg|svg)'
 qr_code.qr_code_download:
   path: '/qr-code/download'
   defaults:
-    _controller: '\Drupal\qr_code\Controller\QRCodeController::downloadQRCodeImage'
+    _controller: '\Drupal\qr_code\Controller\QRCodeController::downloadQRCode'
   methods: [GET]
+  requirements:
+    _permission: 'access content'
+# create a route to my form and add it to the manage menu
+qr_code.qr_code_form:
+  path: '/qr-code/form'
+  defaults:
+    _form: '\Drupal\qr_code\Form\QRCodeForm'
+    _title: 'QR Code Form'
   requirements:
     _permission: 'access content'

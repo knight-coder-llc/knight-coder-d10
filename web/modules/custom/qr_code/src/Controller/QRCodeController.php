@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\my_module\Controller;
+namespace Drupal\qr_code\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\my_module\Services\QRCodeGeneratorService;
+use Drupal\qr_code\Services\QRCodeGeneratorService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -14,7 +14,7 @@ class QRCodeController extends ControllerBase {
   /**
    * The QRCodeGeneratorService.
    *
-   * @var \Drupal\my_module\Services\QRCodeGeneratorService
+   * @var \Drupal\qr_code\Services\QRCodeGeneratorService
    */
   protected $qrCodeGeneratorService;
 

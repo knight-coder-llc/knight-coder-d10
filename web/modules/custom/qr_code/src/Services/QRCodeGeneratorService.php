@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\my_module\Services;
+namespace Drupal\qr_code\Services;
 
 use BaconQrCode\Common\ErrorCorrectionLevel;
 use BaconQrCode\Encoder\Encoder;
