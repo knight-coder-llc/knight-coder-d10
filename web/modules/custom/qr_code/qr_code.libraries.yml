@@ -1,0 +1,4 @@
+qr_code.qr_code_behavior:
+  version: 1.x
+  js:
+    js/qr-code.js: {}

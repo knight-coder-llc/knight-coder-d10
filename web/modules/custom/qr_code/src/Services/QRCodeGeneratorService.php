@@ -2,10 +2,8 @@
 
 namespace Drupal\qr_code\Services;
 
-use BaconQrCode\Common\ErrorCorrectionLevel;
-use BaconQrCode\Encoder\Encoder;
-use BaconQrCode\Renderer\Image\Png;
-use BaconQrCode\Writer;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
 
 class QRCodeGeneratorService {
 
@@ -15,48 +13,57 @@ class QRCodeGeneratorService {
     $this->imageFactory = \Drupal::service('image.factory');
   }
 
-  public function generateQRCodeImage($text, $size = 300, $eccLevel = 'medium', $logoPath = '') {
-
+  public function generateQRCode($text, $size = 300, $eccLevel = 'medium', $logoPath = '') {
+    
     // Set error correction level.
     switch ($eccLevel) {
       case 'low':
-        $errorCorrectionLevel = ErrorCorrectionLevel::L;
-        break;
-      case 'high':
-        $errorCorrectionLevel = ErrorCorrectionLevel::H;
+        $errorCorrectionLevel = QRCode::ECC_L;
         break;
       case 'medium':
+        $errorCorrectionLevel = QRCode::ECC_M;
+        break;
+      case 'high':
       default:
-        $errorCorrectionLevel = ErrorCorrectionLevel::M;
+        $errorCorrectionLevel = QRCode::ECC_H;
         break;
     }
 
-    // Encode the text into a QR code.
-    $qrCode = Encoder::encode($text, $errorCorrectionLevel);
+    $options = new QROptions(
+      [
+        'eccLevel' =>  $errorCorrectionLevel,
+        'outputType' => QRCode::OUTPUT_MARKUP_SVG,
+        'version' => 5,
+      ]
+    );
 
     // Set the QR code size.
-    $renderer = new Png();
-    $renderer->setWidth($size);
-    $renderer->setHeight($size);
+    // $renderer = new Png();
+    // $renderer->setWidth($size);
+    // $renderer->setHeight($size);
 
-    // Add a logo to the QR code if specified.
-    if (!empty($logoPath)) {
-      $logoImage = $this->imageFactory->get($logoPath);
-      if (!empty($logoImage)) {
-        $logoWidth = $size / 5;
-        $logoHeight = $size / 5;
-        $logoImage->resize($logoWidth, $logoHeight);
-        $logoImageData = $logoImage->get('png');
-        $renderer->setLogoPath($logoImageData);
-        $renderer->setLogoWidth($logoWidth);
-        $renderer->setLogoHeight($logoHeight);
-      }
-    }
+    // // Add a logo to the QR code if specified.
+    // if (!empty($logoPath)) {
+    //   $logoImage = $this->imageFactory->get($logoPath);
+    //   if (!empty($logoImage)) {
+    //     $logoWidth = $size / 5;
+    //     $logoHeight = $size / 5;
+    //     $logoImage->resize($logoWidth, $logoHeight);
+    //     $logoImageData = $logoImage->get('png');
+    //     $renderer->setLogoPath($logoImageData);
+    //     $renderer->setLogoWidth($logoWidth);
+    //     $renderer->setLogoHeight($logoHeight);
+    //   }
+    // }
 
-    // Write the QR code image data.
-    $writer = new Writer($renderer);
-    $imageData = $writer->writeString($qrCode);
+    // // Write the QR code image data.
+    // $writer = new Writer($renderer);
+    // $imageData = $writer->writeString($qrCode);
 
-    return $imageData;
+    // Encode the text into a QR code.
+    $qrCode =(new QRCode($options))->render('https://twilio.com');
+    // log the 
+    \Drupal::logger('qr_code')->notice($qrCode);
+    return $qrCode;
   }
 }

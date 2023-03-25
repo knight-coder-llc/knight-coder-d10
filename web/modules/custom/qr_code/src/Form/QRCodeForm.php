@@ -5,10 +5,37 @@ namespace Drupal\qr_code\Form;
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use BaconQrCode\Encoder\QrCode;
+use Drupal\Core\Routing\RedirectDestinationInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class QrCodeForm extends FormBase {
 
+  /**
+   * The redirect destination service.
+   *
+   * @var \Drupal\Core\Routing\RedirectDestinationInterface
+   */
+  protected $redirectDestination;
+
+  /**
+   * MyForm constructor.
+   *
+   * @param \Drupal\Core\Routing\RedirectDestinationInterface $redirect_destination
+   *   The redirect destination service.
+   */
+  public function __construct(RedirectDestinationInterface $redirect_destination) {
+    $this->redirectDestination = $redirect_destination;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('redirect.destination')
+    );
+  }
   /**
    * {@inheritdoc}
    */
@@ -95,11 +122,15 @@ class QrCodeForm extends FormBase {
     // Get the QR text from the form submission.
     $qrText = urlencode($form_state->getValue('qr_code_data'));
     // Send the values to the QR code generator controller.
-    $form_state->setRedirect('qr_code.generate', [
+    $url = Url::fromRoute('qr_code.generate')
+    ->setOption('query',[
       'text' => $qrText,
       'size' => $qrCodeSize,
       'ecc_level' => $qrCodeEccLevel,
       'logo_path' => $qrCodeLogoPath,
     ]);
+
+    $response = new RedirectResponse($url->toString());
+    $response->send();
   }
 }

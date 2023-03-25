@@ -3,6 +3,7 @@
 namespace Drupal\qr_code\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\qr_code\Services\QRCodeGeneratorService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,15 +45,21 @@ class QRCodeController extends ControllerBase {
    * 
    * @return array
    */
-  public function generate($text, $size = 300, $eccLevel = 'medium', $logoPath = '') {
+  public function generate(Request $request) {
     // Use the QRCodeGeneratorService to generate a QR code.
     // $text = 'https://www.example.com';
     // $size = 300;
     // $eccLevel = 'medium';
     // $logoPath = '/path/to/logo.png';
-    $imageData = $this->qrCodeGeneratorService->generateQRCode($text, $size, $eccLevel, $logoPath);
+    $text = $request->query->get('text');
+    $size = $request->query->get('size');
+    $eccLevel = $request->query->get('eccLevel');
+    $logoPath = $request->query->get('logoPath');
 
-    // Render the QR code image in a template.
+    $decoded_text = "https://" . $text;
+    $imageData = $this->qrCodeGeneratorService->generateQRCode($decoded_url, $size, $eccLevel, $logoPath);
+
+    // return the markup
     return [
       '#theme' => 'qr_code_template',
       '#image_data' => $imageData,
