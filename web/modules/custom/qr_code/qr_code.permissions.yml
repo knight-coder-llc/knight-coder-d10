@@ -1,0 +1,6 @@
+access_qr_code:
+  title: 'Access QR Code Generator'
+  description: 'Access QR Code Generator'
+administer_qr_code:
+  title: 'Administer QR Code Entity'
+  description: 'Administer QR Code Entity'

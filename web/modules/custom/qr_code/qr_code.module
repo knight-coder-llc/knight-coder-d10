@@ -1,4 +1,5 @@
 <?php
+use Drupal\menu_link_content\Entity\MenuLinkContent;
 
 function qr_code_theme($existing, $type, $theme, $path) {
   return [
@@ -16,5 +17,25 @@ function qr_code_theme($existing, $type, $theme, $path) {
 function qr_code_preprocess_qr_code_template(&$variables) {
   // add the drupal behavior to this page
   $variables['#attached']['library'][] = 'qr_code/js/qr_code.js';
-  // $variables['#attached']['library'][] = 'qr_code.qr_code_behavior';
 }
+
+// function qr_code_menu_links_discovered_alter(&$links) {
+//   // Check if the user is authenticated and has the 'authenticated' role.
+//   if (!\Drupal::currentUser()->isAuthenticated() || !\Drupal::currentUser()->hasRole('authenticated')) {
+//     // Load the menu link content entity.
+//     $menu_link = MenuLinkContent::load($menu_link_id);
+//     // Get the machine name of the menu link.
+//     $machine_name = $menu_link->getPluginId();
+//     // get the title of the menu link
+//     $title = $menu_link->getTitle();
+    
+
+
+
+//     // If the user is not authenticated or does not have the 'authenticated' role,
+//     // unset the link with a specific link ID from the $links array.
+//     if (isset($links['qr_code_generator'])) {
+//       unset($links['qr_code_generator']);
+//     }
+//   }
+// }

@@ -1,0 +1,12 @@
+qr_code.generator:
+  title: 'Generate QR Code'
+  description: 'Generate custom QR code for your brand.'
+  parent: main
+  menu_name: main
+  route_name: qr_code.qr_code_form
+# qr_code.manage:
+#   title: 'QR Code Entity Types'
+#   description: 'Manage QR Code Entity Types'
+#   parent: system.admin_structure
+#   route_name: entity.qr_code.collection
+#   weight: 100

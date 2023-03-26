@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - qr_code
+name: 'QR Code'
+type: qr_code
+description: 'Create QR Codes'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

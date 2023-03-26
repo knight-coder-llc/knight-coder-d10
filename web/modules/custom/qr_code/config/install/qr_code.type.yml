@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - field
+    - text
+id: qr_code
+label: 'QR Code'
+module: qr_code
+description: 'Stores QR code data along with an expiration date'
+class: Drupal\qr_code\Entity\QrCode
+field_ui_base_route: entity.qr_code.settings
+entity_keys:
+  id:
+    type: integer
+    label: 'ID'
+    provider: qr_code
+  label:
+    type: string
+    label: 'Label'
+    provider: qr_code
+  uuid:
+    type: uuid
+    label: 'UUID'
+    provider: qr_code
+  langcode:
+    type: language
+    label: 'Language'
+    provider: qr_code
+  status:
+    type: boolean
+    label: 'Published'
+    provider: qr_code
+  created:
+    type: created
+    label: 'Created'
+    provider: qr_code
+  changed:
+    type: changed
+    label: 'Modified'
+    provider: qr_code
+  expiration_date:
+    type: datetime
+    label: 'Expiration date'
+    provider: qr_code
+  name:
+    type: string
+    label: 'Name'
+    description: 'The name of the QR Code entity.'
+    required: true
+  image_data:
+    type: string
+    label: 'Image Data'
+    description: 'The base64-encoded image data of the QR Code.'
+    required: true

@@ -4,7 +4,7 @@ qr_code.generate:
     _controller: '\Drupal\qr_code\Controller\QRCodeController::generate'
     _title: 'Generate QR Code'
   requirements:
-    _permission: 'access content'
+    _permission: 'access_qr_code'
     logo_path: '.*\.(png|jpg|jpeg|svg)'
 qr_code.qr_code_download:
   path: '/qr-code/download'
@@ -12,12 +12,57 @@ qr_code.qr_code_download:
     _controller: '\Drupal\qr_code\Controller\QRCodeController::downloadQRCode'
   methods: [GET]
   requirements:
-    _permission: 'access content'
-# create a route to my form and add it to the manage menu
+   _permission: 'access_qr_code'
+
 qr_code.qr_code_form:
   path: '/qr-code/form'
   defaults:
     _form: '\Drupal\qr_code\Form\QRCodeForm'
     _title: 'QR Code Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'access_qr_code'
+
+qr_code.content_list:
+  path: '/admin/content/qr_code'
+  defaults:
+    _entity_list: 'qr_code'
+    _title: 'QR Code content'
+  requirements:
+    _permission: 'administer_qr_code'
+
+qr_code.add:
+  path: '/admin/content/qr_code/add'
+  defaults:
+    _entity_form: 'qr_code.add'
+    _title: 'Add QR Code'
+    _entity_type: 'qr_code'
+  requirements:
+    _permission: 'administer_qr_code'
+
+qr_code.edit:
+  path: '/admin/content/qr_code/{qr_code}/edit'
+  defaults:
+    _entity_form: 'qr_code.edit'
+    _title: 'Edit QR Code'
+    _entity_type: 'qr_code'
+  requirements:
+    _entity_access: 'qr_code.update'
+    _permission: 'administer_qr_code'
+
+qr_code.delete:
+  path: '/admin/content/qr_code/{qr_code}/delete'
+  defaults:
+    _entity_form: 'qr_code.delete'
+    _title: 'Delete QR Code'
+    _entity_type: 'qr_code'
+  requirements:
+    _entity_access: 'qr_code.delete'
+    _permission: 'administer_qr_code'
+    
+qr_code.settings:
+  path: '/admin/structure/qr_code/manage/{qr_code_bundle}'
+  defaults:
+    _form: 'Drupal\qr_code\Form\QrCodeEntityTypeForm'
+    _title: 'QR Code entity types'
+  requirements:
+    _permission: 'administer_qr_code'

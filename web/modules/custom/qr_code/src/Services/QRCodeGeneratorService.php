@@ -61,8 +61,8 @@ class QRCodeGeneratorService {
     // $imageData = $writer->writeString($qrCode);
 
     // Encode the text into a QR code.
-    $qrCode =(new QRCode($options))->render('https://twilio.com');
-    // log the 
+    $qrCode =(new QRCode($options))->render($text);
+    
     \Drupal::logger('qr_code')->notice($qrCode);
     return $qrCode;
   }
