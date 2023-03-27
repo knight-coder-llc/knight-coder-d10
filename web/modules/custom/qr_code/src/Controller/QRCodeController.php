@@ -57,7 +57,7 @@ class QRCodeController extends ControllerBase {
     $logoPath = $request->query->get('logoPath');
 
     // decode the url
-    $decoded_url = UrlHelper::decodePath($text);
+    $decoded_url = urldecode($text);
     $imageData = $this->qrCodeGeneratorService->generateQRCode($decoded_url, $size, $eccLevel, $logoPath);
 
     // return the markup

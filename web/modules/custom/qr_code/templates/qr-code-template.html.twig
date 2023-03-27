@@ -7,29 +7,4 @@
     </div>
   </div>
 {% endblock %}
-
-<script>
-(function() {
-  // Get the base64 encoded image data
-  var imageData = "{{ image_data }}";
-  console.log('image data',imageData)
-  // Create a data URI from the image data
-  var dataURI = imageData;
-  
-  // Create a download link element
-  var downloadLink = document.createElement('a');
-  downloadLink.setAttribute('href', dataURI);
-  downloadLink.setAttribute('download', 'qr-code.png');
-  
-  // get div element by class name qr-code-wrapper
-  var qrCodeWrapper = document.getElementsByClassName('qr-code-wrapper')[0];
-  //append download button to qr-code-wrapper
-  qrCodeWrapper.innerHTML += '<button id="download-btn" class="text-center btn btn-primary" >Download</button>';
-  
-  // Attach a click event handler to the download button
-  var downloadBtn = document.getElementById('download-btn');
-  downloadBtn.addEventListener('click', function() {
-    downloadLink.click();
-  });
-})();
-</script>
+{{ attach_library('qr_code/qr-code-download')}}

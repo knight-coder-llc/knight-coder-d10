@@ -1,4 +1,7 @@
-qr_code.qr_code_behavior:
+qr-code-download:
   version: 1.x
   js:
     js/qr-code.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
