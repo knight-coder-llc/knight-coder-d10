@@ -31,7 +31,7 @@ class QRCodeController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('qr_code.qr_code_generator')
+      $container->get('qr_code.qrcode_generator')
     );
   }
 
@@ -53,9 +53,9 @@ class QRCodeController extends ControllerBase {
     // $logoPath = '/path/to/logo.png';
     $text = $request->query->get('text');
     $size = $request->query->get('size');
-    $eccLevel = $request->query->get('eccLevel');
-    $logoPath = $request->query->get('logoPath');
-
+    $eccLevel = $request->query->get('ecc_level');
+    $logoPath = $request->query->get('logo_path');
+    \Drupal::logger('qr_code_controller')->notice($logoPath);
     // decode the url
     $decoded_url = urldecode($text);
     $imageData = $this->qrCodeGeneratorService->generateQRCode($decoded_url, $size, $eccLevel, $logoPath);

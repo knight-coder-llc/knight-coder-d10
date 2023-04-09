@@ -4,6 +4,8 @@ namespace Drupal\qr_code\Form;
 
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormBase;
+use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\file\Entity\File;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RedirectDestinationInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -107,17 +109,19 @@ class QrCodeForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Get the QR code logo from the form submission.
-    $qrCodeLogo = $form_state->getValue('qr_code_logo');
-    
+    $fid = $form_state->getValue('qr_code_logo')[0];
+    $file = File::load($fid);
+
     // Get the file path of the QR code logo.
     $qrCodeLogoPath = '';
+    if ($file) {
+      $uri = $file->getFileUri();
+      $qrCodeLogoPath = FileUrlGeneratorInterface::generateString($uri);
+    }
+
     // Get size and ecc level
     $qrCodeSize = $form_state->getValue('qr_code_size');
     $qrCodeEccLevel = $form_state->getValue('qr_code_ecc_level');
-
-    if (!empty($qrCodeLogo)) {
-      $qrCodeLogoPath = \Drupal::service('file_system')->realpath($qrCodeLogo[0]);
-    }
 
     // Get the QR text from the form submission.
     $qrText = urlencode($form_state->getValue('qr_code_data'));

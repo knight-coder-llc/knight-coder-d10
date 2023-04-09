@@ -4,6 +4,7 @@ namespace Drupal\qr_code\Services;
 
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Examples\QRImageWithLogo;
 
 class QRCodeGeneratorService {
 
@@ -31,39 +32,25 @@ class QRCodeGeneratorService {
 
     $options = new QROptions(
       [
+        'version' => 7,
         'eccLevel' =>  $errorCorrectionLevel,
-        'outputType' => QRCode::OUTPUT_MARKUP_SVG,
-        'version' => 5,
+        'outputType' => QRCode::OUTPUT_IMAGE_PNG,
       ]
     );
+    \Drupal::logger('qr_code')->notice($logoPath);
+    if(!empty($logoPath)) {
+      $options->logoSpaceWidth = 13;
+      $options->logoSpaceHeight = 13;
+      $options->scale = 5;
+      $options->imageTransparent = false;
 
-    // Set the QR code size.
-    // $renderer = new Png();
-    // $renderer->setWidth($size);
-    // $renderer->setHeight($size);
-
-    // // Add a logo to the QR code if specified.
-    // if (!empty($logoPath)) {
-    //   $logoImage = $this->imageFactory->get($logoPath);
-    //   if (!empty($logoImage)) {
-    //     $logoWidth = $size / 5;
-    //     $logoHeight = $size / 5;
-    //     $logoImage->resize($logoWidth, $logoHeight);
-    //     $logoImageData = $logoImage->get('png');
-    //     $renderer->setLogoPath($logoImageData);
-    //     $renderer->setLogoWidth($logoWidth);
-    //     $renderer->setLogoHeight($logoHeight);
-    //   }
-    // }
-
-    // // Write the QR code image data.
-    // $writer = new Writer($renderer);
-    // $imageData = $writer->writeString($qrCode);
-
-    // Encode the text into a QR code.
-    $qrCode =(new QRCode($options))->render($text);
+      $qrOutputInterface = new QRImageWithLogo($options, (new QRCode($options))->getMatrix($text));
+      $qrCode = $qrOutputInterface->dump(null, $logoPath);
+    } else {
+      // Encode the text into a QR code.
+      $qrCode =(new QRCode($options))->render($text);
+    }
     
-    \Drupal::logger('qr_code')->notice($qrCode);
     return $qrCode;
   }
 }
